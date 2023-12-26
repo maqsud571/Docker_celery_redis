@@ -5,6 +5,7 @@ services:
   redis:
     image: redis:alpine
     container_name: redis
+  # Redis
 
   # Databaze Postgres
   db:
@@ -16,6 +17,7 @@ services:
       - POSTGRES_USER=maqsud571
       - POSTGRES_PASSWORD=1234
     container_name: postgres_db
+  # Databaze Postgres
     
   # Django aplications
   app:
@@ -29,8 +31,10 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - db
-    
-  # celery
+  # Django aplications
+
+
+  # Celery configurate
   celery:
     restart: always
     build:
@@ -43,3 +47,4 @@ services:
       - db
       - redis
       - app
+  # Celery configurate

@@ -158,6 +158,8 @@ USE_TZ = True
 
 
 # Redis Configuration
+
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -167,8 +169,6 @@ CACHES = {
         }
     }
 }
-
-
 
 
 from kombu import Exchange, Queue
