@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  # Redis
+  redis:
+    image: redis:alpine
+    container_name: redis
+
+  # Databaze Postgres
+  db:
+    image: postgres
+    volumes:
+      - ./data:/var/lib/postgres/data
+    environment:
+      - POSTGRES_DB=databasa
+      - POSTGRES_USER=maqsud571
+      - POSTGRES_PASSWORD=1234
+    container_name: postgres_db
+    
+  # Django aplications
+  app:
+    build: .
+    volumes:
+      - .:/django
+    ports:
+      - "8000:8000"
+    image: app:django
+    container_name: django_app
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+    
+  # celery
+  celery:
+    restart: always
+    build:
+      context: .
+    command: celery -A core worker -l DEBUG
+    volumes:
+      - .:/django
+    container_name: celery
+    depends_on:
+      - db
+      - redis
+      - app

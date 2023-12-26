@@ -1,0 +1,15 @@
+asgiref==3.7.2
+Django==3.2.16
+psycopg2==2.9.9
+pytz==2023.3.post1
+sqlparse==0.4.4
+redis==3.5
+celery==5.0
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.1
+drf-yasg==1.21.7
+tzdata==2023.3
+inflection==0.5.1
+packaging==23.2
+PyJWT==2.8.0
+# django-redis-5.4.0
