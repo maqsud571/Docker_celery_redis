@@ -188,6 +188,7 @@ CELERY_DEFAULT_QUEUE = 'default'
 CELERY_QUEUES = (
     Queue('default', Exchange('default'), routing_key='default'),
 )
+# 
 
 CELERY_IMPORTS = ('newapp.tasks', )
 
